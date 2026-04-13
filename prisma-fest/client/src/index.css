@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ──────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-prisma-border;
+  }
+
+  body {
+    @apply bg-prisma-black text-prisma-ivory font-body;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  ::selection {
+    background-color: #FF2442;
+    color: #F5F0E8;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0A0A0F;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A35;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF2442;
+  }
+
+  /* Focus rings */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-prisma-crimson;
+  }
+}
+
+/* ─── Component Classes ───────────────────────────────────── */
+@layer components {
+  .glass-card {
+    @apply bg-prisma-card/80 backdrop-blur-md border border-prisma-border rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-prisma-crimson/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-prisma-crimson/5;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-display text-lg tracking-wider uppercase
+           bg-prisma-crimson text-prisma-ivory rounded-lg
+           transition-all duration-300
+           hover:bg-prisma-crimson/90 hover:shadow-lg hover:shadow-prisma-crimson/25
+           active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-display text-lg tracking-wider uppercase
+           bg-transparent text-prisma-ivory border border-prisma-border rounded-lg
+           transition-all duration-300
+           hover:border-prisma-crimson hover:text-prisma-crimson
+           active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm
+           bg-transparent text-prisma-muted rounded-lg
+           transition-all duration-200
+           hover:bg-prisma-card hover:text-prisma-ivory;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-prisma-dark-surface border border-prisma-border rounded-lg
+           text-prisma-ivory placeholder-prisma-muted/60
+           font-mono text-sm
+           transition-all duration-200
+           focus:border-prisma-crimson focus:ring-1 focus:ring-prisma-crimson/30 focus:outline-none;
+  }
+
+  .label-text {
+    @apply block text-xs font-mono uppercase tracking-widest text-prisma-muted mb-2;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-mono uppercase tracking-wider rounded;
+  }
+
+  .badge-crimson {
+    @apply badge bg-prisma-crimson/15 text-prisma-crimson border border-prisma-crimson/20;
+  }
+
+  .badge-gold {
+    @apply badge bg-prisma-gold/15 text-prisma-gold border border-prisma-gold/20;
+  }
+
+  .badge-teal {
+    @apply badge bg-prisma-teal text-emerald-300 border border-emerald-500/20;
+  }
+
+  .stat-card {
+    @apply glass-card p-6 group hover:border-prisma-crimson/30 transition-all duration-300;
+  }
+
+  .section-heading {
+    @apply font-display text-display uppercase tracking-wider text-prisma-ivory;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-prisma-card rounded;
+  }
+}
+
+/* ─── Utility Animations ──────────────────────────────────── */
+@layer utilities {
+  .text-gradient-crimson {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-prisma-crimson to-red-400;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-prisma-gold to-yellow-300;
+  }
+
+  .glow-crimson {
+    box-shadow: 0 0 30px rgba(255, 36, 66, 0.3), 0 0 60px rgba(255, 36, 66, 0.1);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.3), 0 0 60px rgba(201, 168, 76, 0.1);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
